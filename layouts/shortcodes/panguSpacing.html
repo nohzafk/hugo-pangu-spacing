@@ -1,0 +1,4 @@
+{{ $text := .Inner }}
+{{ $panguSpacingRegex := `([a-zA-Z0-9*]+)([\p{Han}\p{Hiragana}\p{Katakana}。，！？；：「」（）、]+)|([\p{Han}\p{Hiragana}\p{Katakana}。，！？；：「」（）、]+)([a-zA-Z0-9*]+)` }}
+{{ $textWithSpaces := replaceRE $panguSpacingRegex "$1 $2$3 $4" $text }}
+{{ $textWithSpaces | safeHTML }}
